@@ -10,15 +10,18 @@ const cors = require('cors');
 require('dotenv').config();
 
 const authRouter = require('./routes/authRouter');
-
+const usersRouter = require('./routes/usersRouter');
+const scenesRouter = require('./routes/scenesRouter')
 
 // MONGOOSE CONNECTION
 mongoose
   .connect(process.env.MONGODB_URI, {
     keepAlive: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   })
+  
   .then(() => console.log(`Connected to database`))
   .catch((err) => console.error(err));
 
@@ -68,7 +71,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTER MIDDLEWARE
 app.use('/auth', authRouter);
-
+app.use('/users', usersRouter);
+app.use('/scenes', scenesRouter)
 
 // ERROR HANDLING
 // catch 404 and forward to error handler

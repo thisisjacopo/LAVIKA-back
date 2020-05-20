@@ -6,7 +6,7 @@ const createError = require("http-errors");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const User = require("../models/user");
+const User = require("../models/User");
 
 
 // HELPER FUNCTIONS
@@ -14,7 +14,7 @@ const { isLoggedIn, isNotLoggedIn, validationLogin } = require("../helpers/middl
 
 // POST   '/auth/signup'
 authRouter.post('/signup', isNotLoggedIn, validationLogin, (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   User.findOne({ username })
     .then((user) => {
@@ -27,7 +27,7 @@ authRouter.post('/signup', isNotLoggedIn, validationLogin, (req, res, next) => {
         const salt = bcrypt.genSaltSync(saltRounds);
         const hashPass = bcrypt.hashSync(password, salt);
         //     - create the new user in DB using the `username` and the encrypted password
-        User.create({ username, password: hashPass })
+        User.create({ username, email, password: hashPass })
           .then((newUser) => {
             //     - save the newly created user in the `session`
             newUser.password = "****";

@@ -5,8 +5,8 @@ const userSchema = new Schema({
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  imgName: {type: String, required: true, unique: true},
-  imgPath: {type: String, required: true, unique: true},
+  imgPath: {type: String, unique: true},
+  imgName: {type: String, unique: true},
   songs: [{type: Schema.Types.ObjectId, ref:'Song'}]
 }, {
   timestamps: {

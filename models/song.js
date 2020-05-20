@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const songSchema = new Schema({
   name: {type: String, required: true},
+  user: [{type: Schema.Types.ObjectId, ref: 'User'}],
   description: {type: String},
-  urlPath: {type: String}
+  urlPath: {type: String},
 }, {
   timestamps: {
     createdAt: 'created_at',
