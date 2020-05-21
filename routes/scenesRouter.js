@@ -34,8 +34,8 @@ router.delete('/:id', async (req, res, next) =>{
     try{
         const removeSong = await Song.findByIdAndDelete(id)
         res
-        .status(200)
-        .json(removeSong)
+        .status(204)
+        .send()
     } catch(err) {
         next(createError(err))
     }
