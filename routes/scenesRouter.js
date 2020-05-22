@@ -15,13 +15,27 @@ router.get('/', (req, res, next) =>{
         .catch(err => next(createError(err)))
 })
 
+// POSTS A NEW SONG
+router.post('/', async (req, res, next) =>{
+    let {name, description, urlPath} = req.body
+    let user = req.session.currentUser_id
+    try{
+   const song = await Song.create({name, description, urlPath, user})
+   res
+   .status(200)
+   .json(song)
+    } catch(err) {
+        next(createError(err))
+    }
+})
 
 //ADDS URL TO CLOUDINARY
 router.post('/file', uploadCloud.single('urlPath'), async (req, res, next) =>{
     if (!req.file) {
         next(new Error('No file uploaded!'));
         return;
-    }
+    } console.log(req.file.data);
+    
     //   // get secure_url from the file object and save it in the 
     //   // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
     //   res.json({ secure_url: req.file.secure_url });
@@ -35,33 +49,8 @@ router.post('/file', uploadCloud.single('urlPath'), async (req, res, next) =>{
         next(createError(err))
     }
 })
-// // POSTS A NEW SONG
-// router.post('/', uploadCloud.single('file'), async (req, res, next) =>{
-//     let {name, description, urlPath} = req.body
-//     let user = req.session.currentUser_id
-//     try{
-//    const song = await Song.create({name, description, urlPath, user})
-//    res
-//    .status(200)
-//    .json(song)
-//     } catch(err) {
-//         next(createError(err))
-//     }
-// })
 
-// POSTS A NEW SONG
-router.post('/', uploadCloud.single('file'), async (req, res, next) =>{
-    let {name, description, urlPath} = req.body
-    let user = req.session.currentUser_id
-    try{
-   const song = await Song.create({name, description, urlPath, user})
-   res
-   .status(200)
-   .json(song)
-    } catch(err) {
-        next(createError(err))
-    }
-})
+
 
 //DELETES ONE SONG
 router.delete('/:id', async (req, res, next) =>{
