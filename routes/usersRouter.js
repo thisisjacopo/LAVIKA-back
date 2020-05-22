@@ -19,16 +19,11 @@ router.get('/', function (req, res, next) {
   let query = { user: req.session.currentUser._id }
   let user1;
   User.findById(req.session.currentUser._id)
-    .then(user => {
-      user1 = user
-      return Song.find(query)
-      .populate('user')
-    })
-  Song.find(query)
-    .then(Songs => {
-      res
-      .status(201)
-      .json(user1)
+    .populate('songs')
+      .then(user => {
+        res
+        .status(201)
+        .json(user)
     })
     .catch(error => console.log(error));
 });

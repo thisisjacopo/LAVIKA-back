@@ -18,9 +18,10 @@ router.get('/', (req, res, next) =>{
 // POSTS A NEW SONG
 router.post('/', async (req, res, next) =>{
     let {name, description, urlPath} = req.body
-    let user = req.session.currentUser_id
+    let user = req.session.currentUser._id
     try{
    const song = await Song.create({name, description, urlPath, user})
+   await User.findByIdAndUpdate(user, {$push: {songs: song._id}})
    res
    .status(200)
    .json(song)
@@ -65,4 +66,4 @@ router.delete('/:id', async (req, res, next) =>{
     }
 })
 
-module.exports = router;    
+module.exports = router; 
