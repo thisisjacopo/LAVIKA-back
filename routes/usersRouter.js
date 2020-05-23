@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Song = require('../models/Song');
 const User = require('../models/User');
-const uploadCloud = require('../config/cloudinary');
+const uploadCloud = require('../config/cloudinary2');
 const createError = require('http-errors')
 
 
@@ -16,8 +16,6 @@ router.use((req, res, next) => {
 
 
 router.get('/', function (req, res, next) {
-  let query = { user: req.session.currentUser._id }
-  let user1;
   User.findById(req.session.currentUser._id)
     .populate('songs')
       .then(user => {
@@ -28,22 +26,42 @@ router.get('/', function (req, res, next) {
     .catch(error => console.log(error));
 });
 
-
-
-router.put('/', uploadCloud.single('photo'), async (req, res, next) => {
-  const {username, email, imgPath} = req.body;
-
+router.post('/', async (req, res, next) =>{
+  console.log(req.body)
+  let {username, email, aboutMe, imgPath} = req.body
+  let user = req.session.currentUser._id
   try{
-  const user = await User.findByIdAndUpdate({_id: req.session.currentUser._id},
-    {$set: {username, email, imgPath}},
-    {new: true}
-    )
-    res
-    .status(200)
-    .json(user)
+ const user2 = await User.findByIdAndUpdate(user, {$set: {username, email, aboutMe, imgPath}}, {new: true})
+ req.session.currentUser = user2
+ res
+ .status(200)
+ .json(user2)
   } catch(err) {
-    next(createError(err))
-}
+      next(createError(err))
+  }
+})
+
+
+
+//ADDS URL TO CLOUDINARY
+router.post('/file', uploadCloud.single('imgPath'), async (req, res, next) => {
+  if (!req.file) {
+      next(new Error('No file uploaded!'));
+      return;
+  } console.log(req.file.data);
+  
+  //   // get secure_url from the file object and save it in the 
+  //   // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+  //   res.json({ secure_url: req.file.secure_url });
+  try{
+      res
+      .status(200)
+      .json({
+          imgPath: req.file.secure_url
+      })
+  } catch(err) {
+      next(createError(err))
+  }
 })
 
 

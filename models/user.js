@@ -6,6 +6,7 @@ const userSchema = new Schema({
   email: {type: String},
   password: {type: String},
   imgPath: {type: String},
+  aboutMe: {type: String},
   songs: [{type: Schema.Types.ObjectId, ref:'Song'}]
 }, {
   timestamps: {
