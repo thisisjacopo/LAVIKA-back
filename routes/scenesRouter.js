@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
-const Song = require('../models/Song');
 const createError = require('http-errors')
 const uploadCloud = require('../config/cloudinary')
+const User = require("../models/user");
+const Song = require('../models/song');
 
 //GETS ALL SONGS FROM ALL USERS
 router.get('/', (req, res, next) =>{

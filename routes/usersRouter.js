@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Song = require('../models/Song');
-const User = require('../models/User');
 const uploadCloud = require('../config/cloudinary2');
 const createError = require('http-errors')
+const Song = require('../models/song');
+const User = require('../models/user');
 
 
 router.use((req, res, next) => {
