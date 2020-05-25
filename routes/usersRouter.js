@@ -17,7 +17,7 @@ router.use((req, res, next) => {
 
 router.get('/', function (req, res, next) {
   User.findById(req.session.currentUser._id)
-    .populate('songs')
+    .populate('songs scenes')
       .then(user => {
         res
         .status(201)
