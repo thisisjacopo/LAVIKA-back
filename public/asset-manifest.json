@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f9fe6372.chunk.css",
+    "main.js": "/static/js/main.1590a69c.chunk.js",
+    "main.js.map": "/static/js/main.1590a69c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f3a02c50.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f3a02c50.js.map",
+    "static/js/2.92420e2f.chunk.js": "/static/js/2.92420e2f.chunk.js",
+    "static/js/2.92420e2f.chunk.js.map": "/static/js/2.92420e2f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5e625a3ca34e6a79c6f6103a631ecec4.js": "/precache-manifest.5e625a3ca34e6a79c6f6103a631ecec4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.f9fe6372.chunk.css.map": "/static/css/main.f9fe6372.chunk.css.map",
+    "static/js/2.92420e2f.chunk.js.LICENSE.txt": "/static/js/2.92420e2f.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/Mantra-Regular.8233c19a.ttf",
+    "static/media/hh.wav": "/static/media/hh.d70b25a2.wav",
+    "static/media/k.wav": "/static/media/k.95352fd4.wav",
+    "static/media/o1.wav": "/static/media/o1.22cd8a7b.wav",
+    "static/media/o2.wav": "/static/media/o2.3e96ee9f.wav",
+    "static/media/o3.wav": "/static/media/o3.1ed73156.wav",
+    "static/media/o4.wav": "/static/media/o4.d14a03d1.wav",
+    "static/media/o5.wav": "/static/media/o5.0bc6096a.wav",
+    "static/media/o6.wav": "/static/media/o6.62f6aa57.wav",
+    "static/media/s.wav": "/static/media/s.aa8a9169.wav"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f3a02c50.js",
+    "static/js/2.92420e2f.chunk.js",
+    "static/css/main.f9fe6372.chunk.css",
+    "static/js/main.1590a69c.chunk.js"
+  ]
+}
