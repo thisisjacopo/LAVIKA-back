@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 const sceneSchema = new Schema({
   user: {type: Schema.Types.ObjectId, ref: 'User'},
+  name:{type:String},
   strokeR: {type: Number},
   strokeB: {type: Number},
-  strokeG: {type: Number}
+  strokeG: {type: Number},
+  patterns:{type: Schema.Types.Mixed}
   
 }, {
   timestamps: {

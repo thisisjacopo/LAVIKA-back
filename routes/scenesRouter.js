@@ -16,7 +16,7 @@ router.get('/', (req, res, next) =>{
         .catch(err => next(createError(err)))
 })
 
-// POSTS A NEW SONG
+
 router.post('/', async (req, res, next) =>{
     let {name, description, urlPath} = req.body
     let user = req.session.currentUser._id
@@ -36,11 +36,11 @@ router.post('/', async (req, res, next) =>{
 
 //POSTS A NEW SCENE
 router.post('/save', async (req, res, next) =>{
-    console.log(req.body);
-    let {strokeR, strokeG, strokeB} = req.body
+
+    let {strokeR, strokeG, strokeB,patterns, name} = req.body
     let user = req.session.currentUser._id
     try{
-   const scene = await Scene.create({user, strokeR, strokeG, strokeB})
+   const scene = await Scene.create({user, strokeR, strokeG, strokeB,patterns, name})
    await User.findByIdAndUpdate(user, {$push: {scenes: scene._id}})
    res
    .status(200)
@@ -56,11 +56,7 @@ router.post('/file', uploadCloud.single('urlPath'), async (req, res, next) => {
     if (!req.file) {
         next(new Error('No file uploaded!'));
         return;
-    } console.log(req.file.data);
-    
-    //   // get secure_url from the file object and save it in the 
-    //   // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
-    //   res.json({ secure_url: req.file.secure_url });
+    } 
     try{
         res
         .status(200)
