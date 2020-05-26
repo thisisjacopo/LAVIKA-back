@@ -37,10 +37,10 @@ router.post('/', async (req, res, next) =>{
 //POSTS A NEW SCENE
 router.post('/save', async (req, res, next) =>{
 
-    let {strokeR, strokeG, strokeB,patterns, name} = req.body
+    let {strokeR, strokeG, strokeB,patterns, name, capture} = req.body
     let user = req.session.currentUser._id
     try{
-   const scene = await Scene.create({user, strokeR, strokeG, strokeB,patterns, name})
+   const scene = await Scene.create({user, strokeR, strokeG, strokeB,patterns, name,capture})
    await User.findByIdAndUpdate(user, {$push: {scenes: scene._id}})
    res
    .status(200)
@@ -74,7 +74,7 @@ router.post('/file', uploadCloud.single('urlPath'), async (req, res, next) => {
 router.delete('/:id', async (req, res, next) =>{
     const id = req.params.id;
     try{
-        const removeSong = await Song.findByIdAndDelete(id)
+        const removeScene = await Scene.findByIdAndDelete(id)
         res
         .status(204)
         .send()

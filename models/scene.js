@@ -7,7 +7,8 @@ const sceneSchema = new Schema({
   strokeR: {type: Number},
   strokeB: {type: Number},
   strokeG: {type: Number},
-  patterns:{type: Schema.Types.Mixed}
+  patterns:{type: Schema.Types.Mixed},
+  capture: {type: String}
   
 }, {
   timestamps: {
