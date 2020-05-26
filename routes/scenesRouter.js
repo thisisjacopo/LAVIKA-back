@@ -20,8 +20,9 @@ router.get('/', (req, res, next) =>{
 router.post('/', async (req, res, next) =>{
     let {name, description, urlPath} = req.body
     let user = req.session.currentUser._id
+    let artist = req.session.currentUser.username
     try{
-   const song = await Song.create({name, description, urlPath, user})
+   const song = await Song.create({name, description, urlPath, user, artist})
    await User.findByIdAndUpdate(user, {$push: {songs: song._id}})
    res
    .status(200)
