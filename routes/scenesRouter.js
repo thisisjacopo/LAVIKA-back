@@ -7,9 +7,9 @@ const Song = require('../models/song');
 const Scene = require('../models/scene');
 
 //GETS ALL SONGS FROM ALL USERS
-router.get('/', (req, res, next) =>{
+router.get('/', (req, res, next) => {
     Song.find()
-        .then(songs =>{
+        .then(songs => {
             res.json(songs)
             res.status(200)
         })
@@ -17,17 +17,17 @@ router.get('/', (req, res, next) =>{
 })
 
 
-router.post('/', async (req, res, next) =>{
-    let {name, description, urlPath} = req.body
+router.post('/', async (req, res, next) => {
+    let { name, description, urlPath } = req.body
     let user = req.session.currentUser._id
     let artist = req.session.currentUser.username
-    try{
-   const song = await Song.create({name, description, urlPath, user, artist})
-   await User.findByIdAndUpdate(user, {$push: {songs: song._id}})
-   res
-   .status(200)
-   .json(song)
-    } catch(err) {
+    try {
+        const song = await Song.create({ name, description, urlPath, user, artist })
+        await User.findByIdAndUpdate(user, { $push: { songs: song._id } })
+        res
+            .status(200)
+            .json(song)
+    } catch (err) {
         next(createError(err))
     }
 })
@@ -35,35 +35,49 @@ router.post('/', async (req, res, next) =>{
 
 
 //POSTS A NEW SCENE
-router.post('/save', async (req, res, next) =>{
+router.post('/save', async (req, res, next) => {
 
-    let {strokeR, strokeG, strokeB,patterns, name, capture} = req.body
+    let { strokeR, strokeG, strokeB, patterns, name, capture, canvas } = req.body
     let user = req.session.currentUser._id
-    try{
-   const scene = await Scene.create({user, strokeR, strokeG, strokeB,patterns, name,capture})
-   await User.findByIdAndUpdate(user, {$push: {scenes: scene._id}})
-   res
-   .status(200)
-   .json(scene)
-    } catch(err) {
+    try {
+        const scene = await Scene.create({ user, strokeR, strokeG, strokeB, patterns, name, capture, canvas })
+        await User.findByIdAndUpdate(user, { $push: { scenes: scene._id } })
+        res
+            .status(200)
+            .json(scene)
+    } catch (err) {
         next(createError(err))
     }
 })
 
+router.put('/update', async (req, res, next) => {
+
+    let { strokeR, strokeG, strokeB, patterns, sceneId, name, capture, canvas,bpm } = req.body
+    let user = req.session.currentUser._id
+
+    try {
+        const scene = await Scene.findByIdAndUpdate(sceneId, { user,bpm, strokeR, strokeG, strokeB, patterns, name, capture, canvas })
+        res
+            .status(200)
+            .json(scene)
+    } catch (err) {
+        next(createError(err))
+    }
+})
 
 //ADDS URL TO CLOUDINARY
 router.post('/file', uploadCloud.single('urlPath'), async (req, res, next) => {
     if (!req.file) {
         next(new Error('No file uploaded!'));
         return;
-    } 
-    try{
+    }
+    try {
         res
-        .status(200)
-        .json({
-            urlPath: req.file.secure_url
-        })
-    } catch(err) {
+            .status(200)
+            .json({
+                urlPath: req.file.secure_url
+            })
+    } catch (err) {
         next(createError(err))
     }
 })
@@ -71,22 +85,22 @@ router.post('/file', uploadCloud.single('urlPath'), async (req, res, next) => {
 
 
 //DELETES ONE SONG
-router.delete('/:id', async (req, res, next) =>{
+router.delete('/:id', async (req, res, next) => {
     const id = req.params.id;
-    try{
+    try {
         const removeScene = await Scene.findByIdAndDelete(id)
         res
-        .status(204)
-        .send()
-    } catch(err) {
+            .status(204)
+            .send()
+    } catch (err) {
         next(createError(err))
     }
 })
 
-router.get('/:id', (req, res, next) =>{
+router.get('/:id', (req, res, next) => {
     let sceneId = req.params.id
     Scene.findById(sceneId)
-        .then(scene =>{
+        .then(scene => {
             res.json(scene)
             res.status(200)
         })

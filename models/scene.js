@@ -8,7 +8,9 @@ const sceneSchema = new Schema({
   strokeB: {type: Number},
   strokeG: {type: Number},
   patterns:{type: Schema.Types.Mixed},
-  capture: {type: String}
+  capture: {type: String},
+  canvas: {type:Number},
+  bpm:{type:String}
   
 }, {
   timestamps: {
