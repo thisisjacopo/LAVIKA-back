@@ -1,32 +1,36 @@
 {
   "files": {
-    "main.css": "/static/css/main.1042ad92.chunk.css",
-    "main.js": "/static/js/main.a31d25dc.chunk.js",
-    "main.js.map": "/static/js/main.a31d25dc.chunk.js.map",
+    "main.css": "/static/css/main.a4dbed96.chunk.css",
+    "main.js": "/static/js/main.a709aadc.chunk.js",
+    "main.js.map": "/static/js/main.a709aadc.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f3a02c50.js",
     "runtime-main.js.map": "/static/js/runtime-main.f3a02c50.js.map",
-    "static/js/2.762e3837.chunk.js": "/static/js/2.762e3837.chunk.js",
-    "static/js/2.762e3837.chunk.js.map": "/static/js/2.762e3837.chunk.js.map",
+    "static/js/2.23bcc547.chunk.js": "/static/js/2.23bcc547.chunk.js",
+    "static/js/2.23bcc547.chunk.js.map": "/static/js/2.23bcc547.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.cd9f4a1806c1abf23384b6af3fb74277.js": "/precache-manifest.cd9f4a1806c1abf23384b6af3fb74277.js",
+    "precache-manifest.e8af857ecc63051904f027cc32637fed.js": "/precache-manifest.e8af857ecc63051904f027cc32637fed.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.1042ad92.chunk.css.map": "/static/css/main.1042ad92.chunk.css.map",
-    "static/js/2.762e3837.chunk.js.LICENSE.txt": "/static/js/2.762e3837.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/static/media/fondo.4cf2988d.jpg",
+    "static/css/main.a4dbed96.chunk.css.map": "/static/css/main.a4dbed96.chunk.css.map",
+    "static/js/2.23bcc547.chunk.js.LICENSE.txt": "/static/js/2.23bcc547.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/fondo.159fe53d.jpg",
     "static/media/hh.wav": "/static/media/hh.d70b25a2.wav",
+    "static/media/hihat.png": "/static/media/hihat.76d3663e.png",
     "static/media/k.wav": "/static/media/k.95352fd4.wav",
+    "static/media/kick.png": "/static/media/kick.f31b3b3d.png",
     "static/media/o1.wav": "/static/media/o1.22cd8a7b.wav",
     "static/media/o2.wav": "/static/media/o2.3e96ee9f.wav",
     "static/media/o3.wav": "/static/media/o3.1ed73156.wav",
     "static/media/o4.wav": "/static/media/o4.d14a03d1.wav",
     "static/media/o5.wav": "/static/media/o5.0bc6096a.wav",
     "static/media/o6.wav": "/static/media/o6.62f6aa57.wav",
-    "static/media/s.wav": "/static/media/s.aa8a9169.wav"
+    "static/media/s.wav": "/static/media/s.aa8a9169.wav",
+    "static/media/sinte.png": "/static/media/sinte.1dcc1298.png",
+    "static/media/snare.png": "/static/media/snare.9fcd20ff.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f3a02c50.js",
-    "static/js/2.762e3837.chunk.js",
-    "static/css/main.1042ad92.chunk.css",
-    "static/js/main.a31d25dc.chunk.js"
+    "static/js/2.23bcc547.chunk.js",
+    "static/css/main.a4dbed96.chunk.css",
+    "static/js/main.a709aadc.chunk.js"
   ]
 }
