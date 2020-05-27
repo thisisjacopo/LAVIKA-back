@@ -8,9 +8,9 @@ const Scene = require('../models/scene');
 
 //GETS ALL SONGS FROM ALL USERS
 router.get('/', (req, res, next) => {
-    Song.find()
-        .then(songs => {
-            res.json(songs)
+    Scene.find()
+        .then(scenes => {
+            res.json(scenes)
             res.status(200)
         })
         .catch(err => next(createError(err)))
