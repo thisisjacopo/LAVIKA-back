@@ -36,11 +36,11 @@ router.post('/', async (req, res, next) => {
 
 //POSTS A NEW SCENE
 router.post('/save', async (req, res, next) => {
-
-    let { strokeR, strokeG, strokeB, patterns, name, capture, canvas } = req.body
+    console.log(req.body);
+    let { strokeR, strokeG, strokeB, patterns, name, capture, canvas,alphaStroke,betaStroke } = req.body
     let user = req.session.currentUser._id
     try {
-        const scene = await Scene.create({ user, strokeR, strokeG, strokeB, patterns, name, capture, canvas })
+        const scene = await Scene.create({ user, strokeR, strokeG, strokeB, patterns, name, capture, canvas,alphaStroke,betaStroke })
         await User.findByIdAndUpdate(user, { $push: { scenes: scene._id } })
         res
             .status(200)
@@ -51,12 +51,12 @@ router.post('/save', async (req, res, next) => {
 })
 
 router.put('/update', async (req, res, next) => {
-
-    let { strokeR, strokeG, strokeB, patterns, sceneId, name, capture, canvas,bpm } = req.body
+    console.log(req.body);
+    let { strokeR, strokeG, strokeB, patterns, sceneId, name, capture, canvas,bpm,alphaStroke,betaStroke } = req.body
     let user = req.session.currentUser._id
 
     try {
-        const scene = await Scene.findByIdAndUpdate(sceneId, { user,bpm, strokeR, strokeG, strokeB, patterns, name, capture, canvas })
+        const scene = await Scene.findByIdAndUpdate(sceneId, { user,bpm, strokeR, strokeG, strokeB, patterns, name, capture, canvas,alphaStroke,betaStroke })
         res
             .status(200)
             .json(scene)
