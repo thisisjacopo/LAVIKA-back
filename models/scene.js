@@ -10,7 +10,9 @@ const sceneSchema = new Schema({
   patterns:{type: Schema.Types.Mixed},
   capture: {type: String},
   canvas: {type:Number},
-  bpm:{type:String}
+  bpm:{type:String},
+  alphaStroke:{type:Number},
+  betaStroke:{type:Number},
   
 }, {
   timestamps: {

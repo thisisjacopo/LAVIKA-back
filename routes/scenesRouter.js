@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
 
 //POSTS A NEW SCENE
 router.post('/save', async (req, res, next) => {
-    console.log(req.body);
+
     let { strokeR, strokeG, strokeB, patterns, name, capture, canvas,alphaStroke,betaStroke } = req.body
     let user = req.session.currentUser._id
     try {
@@ -51,7 +51,7 @@ router.post('/save', async (req, res, next) => {
 })
 
 router.put('/update', async (req, res, next) => {
-    console.log(req.body);
+
     let { strokeR, strokeG, strokeB, patterns, sceneId, name, capture, canvas,bpm,alphaStroke,betaStroke } = req.body
     let user = req.session.currentUser._id
 
