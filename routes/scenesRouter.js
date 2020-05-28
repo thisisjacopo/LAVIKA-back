@@ -9,6 +9,7 @@ const Scene = require('../models/scene');
 //GETS ALL SONGS FROM ALL USERS
 router.get('/', (req, res, next) => {
     Scene.find()
+    .populate('user')
         .then(scenes => {
             res.json(scenes)
             res.status(200)
